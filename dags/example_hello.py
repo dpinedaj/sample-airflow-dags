@@ -21,42 +21,34 @@ dag = DAG(
 
 start = DummyOperator(task_id='run_this_first', dag=dag)
 
-passing = KubernetesPodOperator(namespace='airflow',
-                                image="Python:3.6",
-                                cmds=["Python", "-c"],
-                                arguments=["print('hello world')"],
-                                labels={"foo": "bar"},
-                                name="passing-test",
-                                task_id="passing-task",
-                                get_logs=True,
-                                dag=dag
-                                )
 
-failing = KubernetesPodOperator(namespace='airflow',
-                                image="ubuntu:1604",
-                                cmds=["Python", "-c"],
-                                arguments=["print('hello world')"],
-                                labels={"foo": "bar"},
-                                name="fail",
-                                task_id="failing-task",
-                                get_logs=True,
-                                dag=dag
-                                )
-
-
-hello = KubernetesPodOperator(
+streaming = KubernetesPodOperator(
     namespace='airflow',
-    image="python",
-    cmds=["python", "-c"],
-    arguments=["print('HELLO')"],
+    image="dpinedaj/spark-python-base:1.0",
+    cmds=["python"],
+    arguments=["/opt/code/etl/main.py"],
     labels={"foo": "bar"},
     image_pull_policy="Always",
-    name="hello",
-    task_id="hello-task",
+    name="streaming",
+    task_id="streaming-task",
     is_delete_operator_pod=False,
     get_logs=True,
     dag=dag
 )
-passing.set_upstream(start)
-failing.set_upstream(start)
-hello.set_upstream(start)
+
+batch = KubernetesPodOperator(
+    namespace='airflow',
+    image="dpinedaj/spark-python-base:1.0",
+    cmds=["python", "-c"],
+    arguments=["from etl.main import iris_sample;print(iris_sample())"],
+    labels={"foo": "bar"},
+    image_pull_policy="Always",
+    name="batch",
+    task_id="batch-task",
+    is_delete_operator_pod=False,
+    get_logs=True,
+    dag=dag
+)
+
+streaming.set_upstream(start)
+batch.set_upstream(start)
