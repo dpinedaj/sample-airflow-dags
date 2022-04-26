@@ -43,5 +43,20 @@ failing = KubernetesPodOperator(namespace='default',
                                 dag=dag
                                 )
 
+
+hello = KubernetesPodOperator(
+    namespace='default',
+    image="python",
+    cmds=["python", "-c"],
+    arguments=["print('HELLO')"],
+    labels={"foo": "bar"},
+    image_pull_policy="Always",
+    name="hello",
+    task_id="hello-task",
+    is_delete_operator_pod=False,
+    get_logs=True,
+    dag=dag
+)
 passing.set_upstream(start)
 failing.set_upstream(start)
+hello.set_upstream(start)
