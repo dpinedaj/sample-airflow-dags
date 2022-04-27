@@ -62,6 +62,7 @@ class SparkKubernetesSensor(BaseSensorOperator):
             plural="sparkapplications",
             name=self.sparkapplication_name
         )
+        print(sparkapplication_state)
         sparkapplication_state = crd_state['status']['applicationState']['state']
         self.log.info('spark application state: {}'.format(sparkapplication_state))
         if sparkapplication_state in self.FAILURE_STATES:
