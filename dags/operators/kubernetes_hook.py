@@ -32,7 +32,7 @@ class Kuberneteshook(BaseHook):
         if self.kube_config:
             config.load_kube_config(self.kube_config)
         else:
-            config.load_kube_config()
+            config.load_incluster_config()
         if api_kind == 'crd':
             api = client.CustomObjectsApi()
         return api
