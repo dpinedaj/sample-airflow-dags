@@ -5,7 +5,7 @@ metadata:
   namespace: default
 spec:
   type: Python
-  pythonVersion: 3
+  pythonVersion: "3"
   mainApplicationFile: local:///opt/code/etl/run-airflow.py
   mode: cluster
   image: "dpinedaj/spark-python-base:1.0"
