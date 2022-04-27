@@ -1,7 +1,6 @@
 from airflow import DAG
 from datetime import datetime, timedelta
 from airflow.contrib.operators.kubernetes_pod_operator import KubernetesPodOperator
-from airflow.operators.dummy_operator import DummyOperator
 
 
 default_args = {
@@ -16,10 +15,7 @@ default_args = {
 }
 
 dag = DAG(
-    'kubernetes_sample', default_args=default_args, schedule_interval=timedelta(minutes=10))
-
-
-start = DummyOperator(task_id='run_this_first', dag=dag)
+    'kubernetes_1Pod_sample_streaming', default_args=default_args, schedule_interval=timedelta(minutes=10))
 
 
 streaming = KubernetesPodOperator(
@@ -37,20 +33,4 @@ streaming = KubernetesPodOperator(
     dag=dag
 )
 
-batch = KubernetesPodOperator(
-    namespace='airflow',
-    image="dpinedaj/spark-python-base:1.0",
-    cmds=["python", "-c"],
-    arguments=["from etl.main import iris_sample;print(iris_sample())"],
-    labels={"foo": "bar"},
-    image_pull_policy="Always",
-    service_account_name="default",
-    name="batch",
-    task_id="batch-task",
-    is_delete_operator_pod=False,
-    get_logs=True,
-    dag=dag
-)
-
-streaming.set_upstream(start)
-batch.set_upstream(start)
+streaming
