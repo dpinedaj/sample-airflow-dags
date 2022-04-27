@@ -20,7 +20,7 @@ dag = DAG(
 
 
 batch = KubernetesPodOperator(
-    namespace='airflow',
+    namespace='default',
     image="dpinedaj/spark-python-base:1.0",
     cmds=["python", "-c"],
     arguments=["from etl.main import iris_sample;print(iris_sample())"],

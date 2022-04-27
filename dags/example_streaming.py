@@ -19,7 +19,7 @@ dag = DAG(
 
 
 streaming = KubernetesPodOperator(
-    namespace='airflow',
+    namespace='default',
     image="dpinedaj/spark-python-base:1.0",
     cmds=["python"],
     arguments=["/opt/code/etl/main.py"],
