@@ -26,7 +26,7 @@ spec:
   pythonVersion: 2
   mainApplicationFile: local:///opt/code/etl/run-airflow.py
   mode: cluster
-  image: "dpineda/spark-python-base:1.0"
+  image: "dpinedaj/spark-python-base:1.0"
   imagePullPolicy: Always
   sparkVersion: "3.2.1"
   restartPolicy:
