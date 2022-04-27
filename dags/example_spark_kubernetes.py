@@ -19,7 +19,7 @@ dag = DAG(
 t1 = SparkKubernetesOperator(
     task_id='spark_pi_submit',
     namespace="default",
-    application_file="example_spark_kubernetes_spark_pi.yaml",
+    application_file=open("/opt/airflow/dags/example_spark_kubernetes_spark_pi.yaml").read(),
     do_xcom_push=True,
     dag=dag,
 )
