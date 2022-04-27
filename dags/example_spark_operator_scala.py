@@ -86,7 +86,7 @@ spark_application_name = "spark-pi-{{ ds }}-{{ task_instance.try_number }}"
 spark_application_dict['metadata']['name'] = spark_application_name
 
 dag = DAG(
-    'spark_pi',
+    'spark_pi-scala',
     default_args=default_args,
     description='submit martgen on kubernetes',
     schedule_interval=timedelta(days=1),
