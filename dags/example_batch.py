@@ -20,13 +20,13 @@ dag = DAG(
 
 
 batch = KubernetesPodOperator(
-    namespace='default',
+    namespace='airflow',
     image="dpinedaj/spark-python-base:1.0",
     cmds=["python", "-c"],
     arguments=["from etl.main import iris_sample;print(iris_sample())"],
     labels={"foo": "bar"},
     image_pull_policy="Always",
-    service_account_name="default",
+    service_account_name="spark-sa",
     name="batch",
     task_id="batch-task",
     is_delete_operator_pod=False,

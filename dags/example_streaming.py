@@ -19,13 +19,13 @@ dag = DAG(
 
 
 streaming = KubernetesPodOperator(
-    namespace='default',
+    namespace='airflow',
     image="dpinedaj/spark-python-base:1.0",
     cmds=["python"],
     arguments=["/opt/code/etl/main.py"],
     labels={"foo": "bar"},
     image_pull_policy="Always",
-    service_account_name="default",
+    service_account_name="spark-sa",
     name="streaming",
     task_id="streaming-task",
     is_delete_operator_pod=False,
