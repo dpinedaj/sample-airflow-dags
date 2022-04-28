@@ -29,7 +29,7 @@ batch = KubernetesPodOperator(
     service_account_name="spark-sa",
     name="batch",
     task_id="batch-task",
-    is_delete_operator_pod=False,
+    is_delete_operator_pod=True,
     get_logs=True,
     dag=dag
 )
