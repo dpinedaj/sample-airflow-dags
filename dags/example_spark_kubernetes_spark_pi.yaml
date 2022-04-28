@@ -4,10 +4,10 @@ metadata:
   name: "spark-pi-{{ ds }}-{{ task_instance.try_number }}"
   namespace: airflow
 spec:
-  timeToLiveSeconds: 30
+  # timeToLiveSeconds: 30
   type: Python
   pythonVersion: "3"
-  mainApplicationFile: local:///opt/code/etl/run-airflow.py
+  mainApplicationFile: local:///opt/code/etl/run_batch.py
   mode: cluster
   image: "dpinedaj/spark-operator:1.0"
   imagePullPolicy: Always
