@@ -9,7 +9,7 @@ spec:
   pythonVersion: "3"
   mainApplicationFile: local:///opt/code/etl/run-airflow.py
   mode: cluster
-  image: "dpinedaj/spark-python-base:1.0"
+  image: "dpinedaj/spark-operator:1.0"
   imagePullPolicy: Always
   sparkVersion: "3.2.1"
   restartPolicy:
