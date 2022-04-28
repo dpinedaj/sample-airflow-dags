@@ -4,7 +4,6 @@ metadata:
   name: "spark-pi-{{ ds }}-{{ task_instance.try_number }}"
   namespace: airflow
 spec:
-  ttlSecondsAfterFinished: 30
   type: Python
   pythonVersion: "3"
   mainApplicationFile: local:///opt/code/etl/run-airflow.py
