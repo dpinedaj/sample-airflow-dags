@@ -2,7 +2,7 @@ from airflow.models import BaseOperator
 from airflow.utils.decorators import apply_defaults
 from azure.mgmt.hdinsight.models import ClusterCreateProperties
 
-from hd_insight_plugin.hooks.azure_hdinsight_hook import AzureHDInsightHook
+from dags.plugins.hd_insight_plugin.hooks.hdinsight_hook import HDInsightHook
 
 
 class HDInsightCreateClusterOperator(BaseOperator):
@@ -31,7 +31,7 @@ class HDInsightCreateClusterOperator(BaseOperator):
         self.azure_conn_id = azure_conn_id
 
     def execute(self, context):
-        azure_hook = AzureHDInsightHook(azure_conn_id=self.azure_conn_id)
+        azure_hook = HDInsightHook(azure_conn_id=self.azure_conn_id)
         self.log.info("Executing HDInsightCreateClusterOperator ")
         azure_hook.create_cluster(self.cluster_params, self.cluster_name)
         self.log.info("Finished executing HDInsightCreateClusterOperator")

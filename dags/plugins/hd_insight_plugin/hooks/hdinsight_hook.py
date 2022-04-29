@@ -30,7 +30,7 @@ from cached_property import cached_property
 from msrestazure.azure_operation import AzureOperationPoller
 
 
-class AzureHDInsightHook(BaseHook):
+class HDInsightHook(BaseHook):
 
     def __init__(self, azure_conn_id='azure_default') -> None:
         super().__init__(azure_conn_id)
