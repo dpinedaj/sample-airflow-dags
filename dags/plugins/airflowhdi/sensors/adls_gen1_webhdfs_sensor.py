@@ -1,5 +1,5 @@
 from airflow.contrib.hooks.azure_data_lake_hook import AzureDataLakeHook
-from airflow.operators.sensors import BaseSensorOperator
+from airflow.sensors.base import BaseSensorOperator
 from airflow.utils.decorators import apply_defaults
 
 

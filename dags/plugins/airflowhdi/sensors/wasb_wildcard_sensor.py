@@ -2,7 +2,7 @@ import fnmatch
 import re
 
 from airflow.contrib.hooks.wasb_hook import WasbHook
-from airflow.operators.sensors import BaseSensorOperator
+from airflow.sensors.base import BaseSensorOperator
 from airflow.utils.decorators import apply_defaults
 
 

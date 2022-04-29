@@ -1,5 +1,5 @@
 from airflow import AirflowException
-from airflow.sensors.base_sensor_operator import BaseSensorOperator
+from airflow.sensors.base import BaseSensorOperator
 
 from airflowlivy.hooks.livy_batch_hook import LivyBatchHook
 

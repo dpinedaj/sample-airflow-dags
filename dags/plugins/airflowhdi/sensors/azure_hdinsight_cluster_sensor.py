@@ -1,4 +1,4 @@
-from airflow.sensors.base_sensor_operator import BaseSensorOperator
+from airflow.sensors.base import BaseSensorOperator
 from airflowhdi.hooks import AzureHDInsightHook
 from azure.mgmt.hdinsight.models import HDInsightClusterProvisioningState
 from airflow.exceptions import AirflowException
