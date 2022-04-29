@@ -13,7 +13,7 @@ default_args = {
     'email_on_failure': False,
     'email_on_retry': False,
     'retries': 3,
-    'retry_delay': timedelta(secpmds=30),
+    'retry_delay': timedelta(seconds=30),
     'max_active_runs': 1
 }
 
