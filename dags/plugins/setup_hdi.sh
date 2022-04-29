@@ -1,0 +1,1 @@
+echo 'testing_from_operator' > testing_from_operator.txt
