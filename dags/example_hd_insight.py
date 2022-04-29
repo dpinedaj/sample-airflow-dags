@@ -31,19 +31,19 @@ Login  : Cluster user name
 Password  : cluster password
 Port   : None (or Optional)
 """
-from plugins.airflowhdi.sensors.azure_hdinsight_cluster_sensor import AzureHDInsightClusterSensor
-from plugins.airflowlivy.sensors.livy_batch_sensor import LivyBatchSensor
-from plugins.airflowlivy.operators.livy_batch_operator import LivyBatchOperator
-from plugins.airflowhdi.operators.azure_hdinsight_delete_cluster_operator \
+from airflowhdi.sensors.azure_hdinsight_cluster_sensor import AzureHDInsightClusterSensor
+from airflowlivy.sensors.livy_batch_sensor import LivyBatchSensor
+from airflowlivy.operators.livy_batch_operator import LivyBatchOperator
+from airflowhdi.operators.azure_hdinsight_delete_cluster_operator \
     import AzureHDInsightDeleteClusterOperator
-from plugins.airflowhdi.operators.azure_hdinsight_create_cluster_operator \
+from airflowhdi.operators.azure_hdinsight_create_cluster_operator \
     import ConnectedAzureHDInsightCreateClusterOperator
 from airflow.utils.trigger_rule import TriggerRule
 from airflow.utils import dates
 from airflow import DAG, AirflowException
 from datetime import timedelta
 from airflow.operators.python_operator import PythonOperator
-from plugins.airflowhdi.models import ClusterCreateProperties, \
+from azure.mgmt.hdinsight.models import ClusterCreateProperties, \
     OSType, Tier, ClusterDefinition, ComputeProfile, Role, \
     HardwareProfile, LinuxOperatingSystemProfile, OsProfile, \
     StorageProfile, StorageAccount
