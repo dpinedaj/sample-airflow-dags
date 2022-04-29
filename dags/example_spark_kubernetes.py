@@ -5,11 +5,21 @@ from airflow.providers.cncf.kubernetes.operators.spark_kubernetes import SparkKu
 from airflow.providers.cncf.kubernetes.sensors.spark_kubernetes import SparkKubernetesSensor
 
 
-
+default_args = {
+    'owner': 'airflow',
+    'depends_on_past': False,
+    'start_date': datetime.utcnow(),
+    'email': ['airflow@example.com'],
+    'email_on_failure': False,
+    'email_on_retry': False,
+    'retries': 3,
+    'retry_delay': timedelta(secpmds=30),
+    'max_active_runs': 1
+}
 
 dag = DAG(
     'spark_pi',
-    default_args={'max_active_runs': 1},
+    default_args=default_args,
     description='submit spark-pi as sparkApplication on kubernetes',
     schedule_interval=timedelta(days=1),
     start_date=datetime(2021, 1, 1),
