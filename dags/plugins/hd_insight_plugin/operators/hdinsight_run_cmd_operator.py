@@ -4,9 +4,9 @@ from utils.connections import ssh_sftp_conn
 
 
 
-class HdInsightRunCmdOperator(BaseOperator):
+class HDInsightRunCmdOperator(BaseOperator):
     def __init__(self, host, username, password, cmd, *args, **kwargs):
-        super(HdInsightRunCmdOperator, self).__init__(*args, **kwargs)
+        super(HDInsightRunCmdOperator, self).__init__(*args, **kwargs)
         self._host = host
         self._username = username
         self._password = password

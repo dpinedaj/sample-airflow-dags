@@ -20,7 +20,7 @@ class HDInsightDeleteClusterOperator(BaseOperator):
                  *args,
                  **kwargs
                  ):
-        super(AzureHDInsightDeleteClusterOperator, self).__init__(*args, **kwargs)
+        super(HDInsightDeleteClusterOperator, self).__init__(*args, **kwargs)
         self.cluster_name = cluster_name
         self.azure_conn_id = azure_conn_id
 

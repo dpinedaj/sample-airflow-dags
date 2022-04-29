@@ -24,7 +24,7 @@ class HDInsightCreateClusterOperator(BaseOperator):
                  *args,
                  **kwargs
                  ):
-        super(AzureHDInsightCreateClusterOperator, self).__init__(*args, **kwargs)
+        super(HDInsightCreateClusterOperator, self).__init__(*args, **kwargs)
 
         self.cluster_name = cluster_name
         self.cluster_params = cluster_params
