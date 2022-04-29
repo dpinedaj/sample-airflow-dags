@@ -20,7 +20,7 @@
 from airflow.models import BaseOperator
 from airflow.utils.decorators import apply_defaults
 
-from hooks.azure_hdinsight_hook import AzureHDInsightHook
+from hd_insight_plugin.hooks.azure_hdinsight_hook import AzureHDInsightHook
 
 
 class AzureHDInsightDeleteClusterOperator(BaseOperator):
