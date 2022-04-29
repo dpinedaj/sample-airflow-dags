@@ -1,7 +1,7 @@
 from airflow.models import BaseOperator
 from airflow.utils.decorators import apply_defaults
 
-from dags.plugins.hd_insight_plugin.hooks.hdinsight_hook import HDInsightHook
+from hd_insight_plugin.hooks.hdinsight_hook import HDInsightHook
 
 
 class HDInsightDeleteClusterOperator(BaseOperator):
