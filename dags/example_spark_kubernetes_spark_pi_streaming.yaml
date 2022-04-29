@@ -4,7 +4,7 @@ metadata:
   name: "spark-pi-streaming-{{ ds }}-{{ task_instance.try_number }}"
   namespace: airflow
 spec:
-  timeToLiveSeconds: 30
+  timeToLiveSeconds: 90
   type: Python
   pythonVersion: "3"
   mainApplicationFile: local:///opt/code/etl/run_streaming.py
