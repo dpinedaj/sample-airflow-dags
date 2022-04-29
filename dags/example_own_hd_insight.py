@@ -1,7 +1,7 @@
 
 from datetime import datetime, timedelta
 from airflow import DAG
-from hd_insight_setup import HdInsightSetupOperator
+from hd_insight_plugin import HdInsightRunCmdOperator
 
 default_args = {
     'owner': 'airflow',
@@ -25,7 +25,7 @@ dag = DAG(
     catchup=False,
 )
 
-t1 = HdInsightSetupOperator(
+t1 = HdInsightRunCmdOperator(
     task_id='hd_insight_setup',
     host="test-hdinsight-ssh.azurehdinsight.net",
     username="sshuser",
