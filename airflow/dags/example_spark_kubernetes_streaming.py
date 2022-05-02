@@ -30,7 +30,7 @@ t1 = SparkKubernetesOperator(
     task_id='spark_pi_submit',
     namespace="airflow",
     application_file=open(
-        "/opt/airflow/dags/repo/dags/example_spark_kubernetes_spark_pi_streaming.yaml").read(),
+        "/opt/airflow/dags/repo/airflow/dags/example_spark_kubernetes_spark_pi_streaming.yaml").read(),
     do_xcom_push=True,
     dag=dag,
 )
