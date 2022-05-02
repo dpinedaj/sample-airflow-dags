@@ -1,7 +1,7 @@
 
 from datetime import datetime, timedelta
 from airflow import DAG
-from airflow.operators.hd_insight_plugin import HDInsightRunCmdOperator
+from plugins.hd_insight_plugin import HDInsightRunCmdOperator
 
 default_args = {
     'owner': 'airflow',
