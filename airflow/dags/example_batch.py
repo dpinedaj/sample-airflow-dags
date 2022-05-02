@@ -18,7 +18,6 @@ dag = DAG(
     'kubernetes_1Pod_sample_batch', default_args=default_args, schedule_interval=timedelta(minutes=10))
 
 
-
 batch = KubernetesPodOperator(
     namespace='airflow',
     image="dpinedaj/spark-python-base:1.0",

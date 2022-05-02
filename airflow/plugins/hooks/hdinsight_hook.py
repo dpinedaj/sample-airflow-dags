@@ -25,7 +25,8 @@ from airflow.hooks.base_hook import BaseHook
 from azure.common.client_factory import get_client_from_auth_file
 from azure.common.credentials import ServicePrincipalCredentials
 from azure.mgmt.hdinsight import HDInsightManagementClient
-from azure.mgmt.hdinsight.models import ClusterCreateProperties, ClusterCreateParametersExtended, Cluster
+from azure.mgmt.hdinsight.models import (
+    ClusterCreateProperties, ClusterCreateParametersExtended, Cluster)
 from cached_property import cached_property
 from msrestazure.azure_operation import AzureOperationPoller
 
@@ -96,7 +97,8 @@ class HDInsightHook(BaseHook):
         cluster_deployment: Cluster = self.client.clusters.create(
             cluster_name=cluster_name,
             resource_group_name=self.resource_group_name,
-            parameters=self.get_cluster_create_parameters(self.resource_group_location, {}, cluster_params)
+            parameters=self.get_cluster_create_parameters(
+                self.resource_group_location, {}, cluster_params)
         )
         return cluster_deployment
 
@@ -106,8 +108,9 @@ class HDInsightHook(BaseHook):
         https://docs.microsoft.com/en-us/python/api/overview/azure/hdinsight?view=azure-python
         :return:
         """
-        delete_poller: AzureOperationPoller = self.client.clusters.delete(self.resource_group_name,
-                                                                          cluster_name=cluster_name)
+        delete_poller: AzureOperationPoller = \
+            self.client.clusters.delete(self.resource_group_name,
+                                        cluster_name=cluster_name)
         return delete_poller.result()
 
     @staticmethod

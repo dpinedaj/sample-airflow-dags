@@ -1,7 +1,6 @@
 
 from airflow.models import BaseOperator
-from utils.connections import ssh_sftp_conn
-
+from modules.connections import ssh_sftp_conn
 
 
 class HDInsightRunCmdOperator(BaseOperator):
@@ -27,5 +26,3 @@ class HDInsightRunCmdOperator(BaseOperator):
                 'sh /home/{}/setup_hdi.sh'.format(self._username))
             ssh_client.exec_command(
                 'rm /home/{}/setup_hdi.sh'.format(self._username))
-
-
