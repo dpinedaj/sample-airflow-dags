@@ -1,7 +1,10 @@
 from airflow import DAG
 from datetime import datetime, timedelta
 from airflow.contrib.operators.kubernetes_pod_operator import KubernetesPodOperator
+import logging
 
+log: logging.log = logging.getLogger("airflow")
+log.setLevel(logging.FATAL)
 
 default_args = {
     'owner': 'airflow',
